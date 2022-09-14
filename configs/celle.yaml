@@ -2,11 +2,11 @@ model:
   learning_rate: 0.0003
   target: celle_main.CELLE_trainer
   params:
-    ckpt_path:
-    condition_model_path:
-    condition_config_path:
-    vqgan_model_path:
-    vqgan_config_path:
+    ckpt_path: 
+    condition_model_path: logs/2022-09-14T00-36-40_nucleus_vqgan/checkpoints/last.ckpt
+    condition_config_path: logs/2022-09-14T00-36-40_nucleus_vqgan/configs/2022-09-14T00-36-40-project.yaml
+    vqgan_model_path: logs/2022-09-14T00-14-51_threshold_vqgan/checkpoints/last.ckpt
+    vqgan_config_path: logs/2022-09-14T00-14-51_threshold_vqgan/configs/2022-09-14T00-14-51-project.yaml
     image_key: threshold
     num_images: 2
     dim: 768
@@ -26,7 +26,7 @@ model:
 data:
   target: celle_main.CellDataModule
   params:
-    data_csv: 
+    data_csv: /app/Protein-Localization-Transformer/data/data_csv
     crop_size: 256
     batch_size: 1
     sequence_mode: embedding
