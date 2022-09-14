@@ -53,7 +53,7 @@ def simple_conversion(seq):
 
         seqs_x[idx] = nums[lui]
 
-    return torch.tensor([seqs_x]).long()
+    return torch.tensor(np.array([seqs_x])).long()
 
 
 def convert_descriptor(seq):
@@ -82,7 +82,7 @@ def convert_descriptor(seq):
         "<cls>": 21,
     }
     seq = seq.upper()
-    return torch.tensor([seq_dict[char] for char in seq]).long()
+    return torch.tensor(np.vstack([seq_dict[char] for char in seq])).long()
 
 
 class OpenCellLoader(Dataset):
@@ -210,7 +210,7 @@ class OpenCellLoader(Dataset):
         threshold = target
 
         if self.threshold:
-            threshold = 1.0 * (threshold > (torch.mean(threshold)))
+            threshold = 1.0 * (threshold > (torch.mean(threshold, dtype=float)))
 
         return nucleus, target, threshold
 
