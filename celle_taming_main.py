@@ -524,7 +524,7 @@ if __name__ == "__main__":
                     "name": "testtube",
                     "save_dir": logdir,
                 },
-            },
+            }
         }
         default_logger_cfg = default_logger_cfgs["testtube"]
         logger_cfg = lightning_config.logger or OmegaConf.create()
@@ -540,7 +540,7 @@ if __name__ == "__main__":
                 "filename": "{epoch:06}",
                 "verbose": True,
                 "save_last": True,
-            },
+            }, 
         }
         if hasattr(model, "monitor"):
             print(f"Monitoring {model.monitor} as checkpoint metric.")
@@ -581,6 +581,14 @@ if __name__ == "__main__":
                     # "log_momentum": True
                 },
             },
+            "early_stop": {
+            "target": "pytorch_lightning.callbacks.EarlyStopping",
+            "params": {
+                "monitor": "val/total_loss",
+                "mode": "min",
+                "patience" : 3
+              }, 
+            }
         }
         callbacks_cfg = lightning_config.callbacks or OmegaConf.create()
         callbacks_cfg = OmegaConf.merge(default_callbacks_cfg, callbacks_cfg)

@@ -161,7 +161,7 @@ class OpenCellLoader(Dataset):
         if "protein_sequence" not in self.data.columns:
 
             metadata = self.retrieve_metadata(idx)
-            protein_sequence = metadata["sequence"]
+            protein_sequence = metadata["protein_sequence"]
         else:
             protein_sequence = self.data.iloc[idx]["protein_sequence"]
 
@@ -210,7 +210,7 @@ class OpenCellLoader(Dataset):
         threshold = target
 
         if self.threshold:
-            threshold = 1.0 * (threshold > (torch.mean(threshold)))
+            threshold = 1.0 * (threshold > (torch.mean(threshold, dtype=torch.float)))
 
         return nucleus, target, threshold
 

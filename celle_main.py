@@ -522,6 +522,14 @@ if __name__ == "__main__":
                     "increase_log_steps": False,
                 },
             },
+            "early_stop": {
+            "target": "pytorch_lightning.callbacks.EarlyStopping",
+            "params": {
+                "monitor": "val/total_loss",
+                "mode": "min",
+                "patience" : 3
+              }, 
+            },
             # "learning_rate_logger": {
             #     "target": "celle_taming_main.LearningRateMonitor",
             #     "params": {

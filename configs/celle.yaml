@@ -26,7 +26,7 @@ model:
 data:
   target: celle_main.CellDataModule
   params:
-    data_csv: 
+    data_csv: /content/Protein-Localization-Transformer/data/data_csv
     crop_size: 256
     batch_size: 1
     sequence_mode: embedding
