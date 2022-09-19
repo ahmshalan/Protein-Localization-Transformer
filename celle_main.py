@@ -432,7 +432,7 @@ if __name__ == "__main__":
         # merge trainer cli with config
         trainer_config = lightning_config.get("trainer", OmegaConf.create())
         # default to ddp
-        trainer_config["distributed_backend"] = "ddp"
+        # trainer_config["distributed_backend"] = "ddp"
         for k in nondefault_trainer_args(opt):
             trainer_config[k] = getattr(opt, k)
         if not "gpus" in trainer_config:
@@ -521,6 +521,14 @@ if __name__ == "__main__":
                     "clamp": False,
                     "increase_log_steps": False,
                 },
+            },
+            "early_stop": {
+            "target": "pytorch_lightning.callbacks.EarlyStopping",
+            "params": {
+                "monitor": "val/total_loss",
+                "mode": "min",
+                "patience" : 3
+              }, 
             },
             # "learning_rate_logger": {
             #     "target": "celle_taming_main.LearningRateMonitor",
