@@ -38,5 +38,5 @@ data:
   params:
     data_csv: /app/Protein-Localization-Transformer/data/data_csv
     crop_size: 256
-    batch_size: 1
+    batch_size: 16
     num_workers: 8
