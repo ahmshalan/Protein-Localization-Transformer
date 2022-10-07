@@ -581,14 +581,7 @@ if __name__ == "__main__":
                     # "log_momentum": True
                 },
             },
-            "early_stop": {
-            "target": "pytorch_lightning.callbacks.EarlyStopping",
-            "params": {
-                "monitor": "val/total_loss",
-                "mode": "min",
-                "patience" : 3
-              }, 
-            }
+            
         }
         callbacks_cfg = lightning_config.callbacks or OmegaConf.create()
         callbacks_cfg = OmegaConf.merge(default_callbacks_cfg, callbacks_cfg)
